@@ -9,23 +9,29 @@
 #include <iostream>
 #include <stdlib.h>
 #include <ctime>
+#include <string>
 
 
 int main() {
     // variables
+    std::string numinput;
     srand(time(NULL));
     const int NUMBER = rand()%10;
-    int numinput;
+    int numcheck;
     // input
     std::cout << "guess the number I am thinking of : ";
     std::cin >> numinput;
     std::cout << "" << std::endl;
     // process
-    if (numinput == NUMBER) {
-        // output
-        std::cout << "Correct!";
-    } else {
-        std::cout << "Incorrect! ";
-        std::cout << "Correct number was: " << NUMBER << std::endl;
+    try { 
+        numcheck = std::stoi(numinput);
+        if (numcheck = NUMBER) {
+            std::cout << "Correct!";
+        } else {
+            std::cout << "Incorrect! ";
+            std::cout << "Correct number was: " << NUMBER << std::endl;
+        }
+    } catch (std::invalid_argument) {
+        std::cout << "invalid input";
     }
 }
